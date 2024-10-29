@@ -1,7 +1,9 @@
-import localFont from "next/font/local";
 
+import localFont from "next/font/local";
 import "./globals.css";
-import { AxiosProvider } from "@/contexts/AxiosContext";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { FlashMessageProvider} from "@/contexts/FlashMessageContext";
+import FlashMessage from "@/components/FlashMessage"
 
 const workSansBold = localFont({
   src: "./fonts/WorkSans-Bold.ttf",
@@ -18,15 +20,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
-    <AxiosProvider>
-      <html lang="en">
-        <body
-          className={`${workSansBold.variable} ${workSansRegular.variable} bg-darkBackground antialiased`}
-        >
-          {children}
-        </body>
-      </html>
-    </AxiosProvider>
+    <html lang="en" className={`${workSansBold.variable} ${workSansRegular.variable}`}>
+      <body className="bg-darkBackground antialiased">
+        <FlashMessageProvider>
+          <AuthProvider>
+            <FlashMessage />
+            {children}
+          </AuthProvider>
+        </FlashMessageProvider>
+      </body>
+    </html>
   );
 }

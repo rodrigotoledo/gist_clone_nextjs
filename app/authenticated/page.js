@@ -1,45 +1,39 @@
-// app/dashboard/page.js ou pages/dashboard.js
-"use client"; // Marque o componente como um Client Component, já que usaremos hooks
+"use client";
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useAxios } from '@/contexts/AxiosContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { useFlashMessage } from '@/contexts/FlashMessageContext';
 
 
 export default function Authenticated() {
   const router = useRouter();
-  const axios = useAxios();
-  const [token, setToken] = useState(null);
+  const { authToken, logout } = useAuth();
+  const { showFlashMessage } = useFlashMessage();
 
   useEffect(() => {
-    const authToken = localStorage.getItem('authToken');
-    setToken(authToken);
     if (!authToken) {
-      router.push('/sign-in');
+      showFlashMessage("You do not have permission to access this page.");
+      setTimeout(() => {
+        router.push('/sign-in');
+      }, 2000);
     }
-  }, [router]);
+  }, [authToken, router, showFlashMessage]);
 
   const handleSignOut = async () => {
-    const authToken = localStorage.getItem('authToken');
     try {
-      await axios.delete('/sign-out', {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
-
-      localStorage.removeItem('authToken');
-      setToken(null);
+      await logout();
       router.push('/sign-in');
     } catch (error) {
-      console.error('Error during sign-out:', error);
+      showFlashMessage('Error during sign-out:');
     }
   };
 
+  if (!authToken) return null;
+
   return (
     <>
-      {token && (
+      {authToken && (
         <div className="flex flex-col items-center justify-center min-h-screen p-4">
           <h1 className="text-3xl font-semibold text-gray-800 mb-6">Authenticated Dashboard</h1>
           <button

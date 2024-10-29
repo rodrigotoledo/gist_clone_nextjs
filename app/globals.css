@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.flash-message {
+  position: fixed;
+  top: 1rem; /* Espaço superior */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 90%; /* Largura máxima da mensagem */
+  background-color: #f87171; /* Cor de fundo da mensagem */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideInDown 0.5s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
+  /* slideInDown para entrar e fadeOut para sair */
+}

@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gist Clone Next.js Project
 
-## Getting Started
+## Description
 
-First, run the development server:
+The **Gist Clone Next.js** project is a frontend application built with Next.js to provide a Gist-like experience for managing code snippets. This app offers authentication, account creation, and Gist management, including creating, updating, deleting, and viewing Gists. It connects to a backend API for data management using GraphQL.
+
+## Project Setup
+
+To install dependencies and set up the project, follow these steps:
+
+1. Clone the repository.
+2. Run the following command to install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or build and start the project in production mode:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
 
-## Learn More
+- npm run dev: Starts the Next.js development server.
+- npm run build: Builds the application for production.
+- npm start: Runs the built application in production mode.
+- npm run lint: Lints the codebase with ESLint.
 
-To learn more about Next.js, take a look at the following resources:
+## Dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The main dependencies used in this project include:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- @apollo/client: Apollo Client for managing GraphQL queries and mutations.
+- @headlessui/react and @headlessui/tailwindcss: Provides unstyled UI components compatible with Tailwind CSS.
+- axios: Handles HTTP requests to the backend API.
+- graphql: Core GraphQL library for query syntax.
+- heroicons and react-icons: Icon libraries for UI design.
+- next: The Next.js framework, version 15.
+- react and react-dom: React core libraries for building user interfaces.
 
-## Deploy on Vercel
+## Development Dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- eslint: Lints code for quality and consistency.
+- tailwindcss and postcss: Used for utility-first CSS styling in the app.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Purpose
+
+The purpose of this project is to create a frontend application to interact with a Gist-like backend API. Key features include:
+
+- User Authentication: Login and registration with secure token storage.
+- Gist Management: Users can create, update, delete, and view their Gists with associated metadata.
+
+## Author
+
+- **Rodrigo Toledo**
+  - [GitHub](https://github.com.br/rodrigotoledo)
+  - [YouTube - Devin Lounge](https://www.youtube.com/@devinlounge)
+  - Email: [rodrigo@rtoledo.inf.br](mailto:rodrigo@rtoledo.inf.br)

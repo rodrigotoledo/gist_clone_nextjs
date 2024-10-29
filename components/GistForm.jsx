@@ -8,7 +8,6 @@ export default function GistForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para enviar o novo Gist
     console.log({ name, filename, content });
   };
 

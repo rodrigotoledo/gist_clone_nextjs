@@ -48,7 +48,6 @@ export function AuthProvider({ children }) {
         throw new Error(data.errors[0].message);
       }
 
-
       const { token } = data.login;
       setAuthToken(token);
       localStorage.setItem('token', token);
@@ -88,8 +87,7 @@ export function AuthProvider({ children }) {
         throw new Error(data.errors[0].message);
       }
 
-
-      const { token } = data.login;
+      const { token } = data.createUser;
       setAuthToken(token);
       localStorage.setItem('token', token);
       showFlashMessage("Account create with success!");

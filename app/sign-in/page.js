@@ -32,7 +32,7 @@ export default function SignIn() {
   return (
     <>
       <Head>
-        <title>Gist Clone - SignIn</title>
+        <title>GistNextClone - SignIn</title>
       </Head>
       <div className="flex min-h-screen items-center justify-center flex-col">
         <main className="w-full max-w-md space-y-6">
@@ -43,7 +43,7 @@ export default function SignIn() {
 
           {/* Texto de Sign In */}
           <h2 className="text-center text-2xl text-white">
-            Sign in to GitHub
+            Sign in to GistNextClone
           </h2>
 
           {/* Caixa de Sign In */}

@@ -32,7 +32,7 @@ export default function SignUp() {
   return (
     <>
       <Head>
-        <title>Gist Clone - SignUp</title>
+        <title>GistNextClone - SignUp</title>
       </Head>
     
       <div className="flex min-h-screen items-center justify-center flex-col">
@@ -44,7 +44,7 @@ export default function SignUp() {
 
           {/* Texto de Sign In */}
           <h2 className="text-center text-2xl text-white">
-            Sign in to GitHub
+            Create Faker Account to GistNextClone
           </h2>
 
           {/* Caixa de Sign In */}

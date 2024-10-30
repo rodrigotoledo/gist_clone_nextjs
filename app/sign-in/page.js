@@ -32,7 +32,7 @@ export default function SignIn() {
   return (
     <>
       <Head>
-        <title>Gist Clone - Home</title>
+        <title>Gist Clone - SignIn</title>
       </Head>
       <div className="flex min-h-screen items-center justify-center flex-col">
         <main className="w-full max-w-md space-y-6">

@@ -58,6 +58,46 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const signUp = async (username, password) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:4000/', // Endereço do servidor GraphQL
+        {
+          query: `
+            mutation {
+              createUser(username: "${username}", password: "${password}") {
+                token
+                user {
+                  id
+                  username
+                }
+              }
+            }
+          `,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const { data } = response.data;
+
+      if (data.errors) {
+        throw new Error(data.errors[0].message);
+      }
+
+
+      const { token } = data.login;
+      setAuthToken(token);
+      localStorage.setItem('token', token);
+      showFlashMessage("Account create with success!");
+    } catch (error) {
+      showFlashMessage("Error when creating account");
+    }
+  };
+
   const logout = () => {
     setAuthToken(null);
     localStorage.removeItem('token');
@@ -65,7 +105,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ authToken, login, logout }}>
+    <AuthContext.Provider value={{ authToken, login, logout, signUp }}>
       {isClient ? children : null}
     </AuthContext.Provider>
   );
